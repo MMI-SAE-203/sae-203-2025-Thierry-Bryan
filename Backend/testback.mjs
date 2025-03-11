@@ -1,4 +1,4 @@
-import {updateInvite, addFilm, addActivity, addInvite, /*getActivitybyAnimatorID*/ oneFilmMaker, oneActivity, oneFilm, getFilms, getActivities, getFilmMaker} from "./backend.mjs";
+import {allActiviteByAnimateurName, updateFilm, updateActivity, updateInvite, addFilm, addActivity, addInvite, /*getActivitybyAnimatorID*/ oneFilmMaker, oneActivity, oneFilm, getFilms, getActivities, getFilmMaker} from "./backend.mjs";
 
 /* Q1
 try {
@@ -66,7 +66,16 @@ catch (e) {
 }
 */
 
-/* Q8 Ajout Invite
+/* Q8
+try {
+  const allRecord = await allActiviteByAnimateurName("Forsberg");
+  console.log(allRecord);
+} catch (e) {
+  console.error(e);
+}
+*/
+
+/* Q9.1 Ajout Invite
 try {
     const newInvite = {
         "nom_invite": "Thierry",
@@ -79,7 +88,7 @@ try {
 }
 */
 
-/* Q8 Ajout Film
+/* Q9.2 Ajout Film
 try {
     const newFilm = {
         "titre_film": "Terminator",
@@ -90,7 +99,7 @@ try {
 }
 */
 
-/* Q8 Ajout Activite
+/* Q9.3 Ajout Activite
 try {
     const newActivity = {
         "type_activite": "Course",
@@ -101,7 +110,7 @@ try {
 }
 */
 
-/* Q9 Update Invite
+/* Q9.4 Update Invite
 try {
     const data = {
         "nom_invite": "Thierry",
@@ -115,14 +124,24 @@ catch (e) {
 }
 */
 
-/* Q9 Update Invite
+/* Q9.5 Update Film
 try {
     const data = {
-        "nom_invite": "Thierry",
-        "prenom_invite": "Bryan",
-        "bio_invite": "Je suis un réalisateur",
+        "titre_film": "Thierry",
     };
-    await updateInvite('xe3q514eie834px', data);
+    await updateFilm('xe3q514eie834px', data);
+}
+catch (e) {
+    console.error(e);
+}
+*/
+
+/* Q9.6 Update Activity
+try {
+    const data = {
+        "type_activite": "Course",
+    };
+    await updateActivity('xe3q514eie834px', data);
 }
 catch (e) {
     console.error(e);

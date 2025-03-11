@@ -1,5 +1,5 @@
 import PocketBase from 'pocketbase';
-const pb = new PocketBase('http://127.0.0.1:8090/');
+const pb = new PocketBase('http://127.0.0.1:8090');
 
 //retourne la liste de tous les films triés par date de projection
 export async function getFilms(){
@@ -52,6 +52,11 @@ export async function getActivityAnimatorID(animatorId){
 export async function getActivitybyAnimatorName(animatorName){
     const Records = await pb.collection('invite').getFullList({filter: `nom_invite = "${animatorName}"`});
     return Records;
+}
+
+export async function allActiviteByAnimateurName(nom) {
+  const Records = await pb.collection("activite").getFullList({filter: `animateur.nom_invite = '${nom}'`, expand: "animateur"});
+  return Records;
 }
 
 //Ajout d'un nouvel invité, film et activité

@@ -1,10 +1,66 @@
 ---
 import LogoFooter from "../assets/icons/icon_logo.svg";
+import IconFacebook from "../assets/icons/icon_facebook-blanc.svg";
+import IconInstagram from "../assets/icons/icon_insta-blanc.svg";
+import IconTikTok from "../assets/icons/icon_tiktok-blanc.svg";
+import IconYoutube from "../assets/icons/icon_youtube-blanc.svg";
+import IconStrava from "../assets/icons/icon_strava-blanc.svg";
 ---
 
-<footer class="bg-black h-full border-solid border-t-2 border-t-red-500">
-    <a class="flex items-center ml-1.25 mt-1.25" href="/" aria-label="Accueil">
-      <LogoFooter />
-      <h3 class="text-white">Ça va trail'er</h3>
-    </a>
+<footer
+  class="grid space-y-6 text-sm bg-black py-8 px-6 text-white items-center border-solid border-t-2 border-t-red-500"
+>
+  <a class="flex items-center gap-5" href="/" aria-label="Accueil">
+    <LogoFooter />
+    <h3 class="text-white">Ça va trail'er</h3>
+  </a>
+  <div class="flex justify-center mt-1.25 mb-2.25">
+    <a
+      class="border-solid border-2 border-red-500 py-1.25 px-2.25 bg-white rounded-3xl"
+      href="">BILLETERIE</a
+    >
+  </div>
+  <div class="text-white grid text-center">
+    <h3>Contact</h3>
+    <address>
+      <a href="mailto:cavatrailer@festival.com">cavatrailer@festival.com</a>
+    </address>
+  </div>
+  <div class="grid">
+    <h3 class="flex justify-center">Nous suivre</h3>
+    <ul class="grid grid-cols-5 justify-between items-center">
+      <li>
+        <a href="https://facebook.com" aria-label="facebook">
+          <IconFacebook />
+        </a>
+      </li>
+      <li>
+        <a href="https://instagram.com" aria-label="instagram">
+          <IconInstagram />
+        </a>
+      </li>
+      <li>
+        <a href="https://youtube.com" aria-label="youtube">
+          <IconYoutube />
+        </a>
+      </li>
+      <li>
+        <a href="https://strava.com" aria-label="strava">
+          <IconStrava />
+        </a>
+      </li>
+      <li>
+        <a href="https://tiktok.com" aria-label="tiktok">
+          <IconTikTok />
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="text-white">
+    <h3 class="text-center">MENTIONS LÉGALES</h3>
+    <p>
+      © 2024 Ça va trail’er Festival - Tous droits réservés <br />
+      [Mentions légales] | [Politique de confidentialité] | [Conditions générales]
+    </p>
+  </div>
 </footer>

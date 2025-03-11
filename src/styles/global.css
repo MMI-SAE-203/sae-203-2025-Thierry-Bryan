@@ -1,1 +1,22 @@
 @import "tailwindcss";
+
+@theme {
+    --font-sans: 'Montserrat Variable', sans-serif;
+    --anton: 'Anton', sans-serif;
+}
+
+@layer base {
+    h3 {
+        @apply anton;
+    }
+}
+
+@layer components {
+    .grille {
+        @apply px-6 lg:grid lg:grid-cols-(--my-grid) lg:justify-center lg:gap-12;
+    }
+
+    .noscroll {
+        overflow: hidden;
+    }
+}
