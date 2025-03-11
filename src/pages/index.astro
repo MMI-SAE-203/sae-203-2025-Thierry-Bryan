@@ -1,9 +1,10 @@
 ---
 import "../styles/global.css";
-import Base from "../layouts/Base.astro";
+import LayoutWithHero from "../layouts/LayoutWithHero.astro";
+import myImage from "../assets/hero_page/hero_accueil.webp";
+
+const title = "Ça va Trail’er";
+const heroAlt = "Description de l'image hero";
 ---
 
-<Base titre="Accueil">
-  <h1 class="text-3xl font-bold text-">Hello world!</h1>
-  <p class="h-screen">Texte standard</p>
-</Base>
+<LayoutWithHero title={title} heroImage={myImage} heroAlt={heroAlt} />
