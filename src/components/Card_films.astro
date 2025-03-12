@@ -1,0 +1,36 @@
+---
+import ImagePB from "./ImagePB.astro";
+const { ...film } = Astro.props;
+---
+
+<article
+  class="flex flex-col items-center gap-4 border-2 border-red-400 rounded-xl p-4 shadow-md max-w-xs text-center"
+>
+  <!-- Affiche du film -->
+  <a href={`/films/${film.id}`} class="w-full">
+    <ImagePB
+      record={film}
+      field="affiche_film"
+      alt={film.affiche_film}
+      classPicture="duotone w-full rounded-lg overflow-hidden"
+      classImg="group-hover:grayscale-0 group-hover:mix-blend-normal"
+    />
+  </a>
+
+  <!-- Informations du film -->
+  <div class="flex flex-col gap-2">
+    <h3 class="text-lg font-bold">{film.titre_film}</h3>
+    <p class="text-gray-500">
+      ({film.annee_film}, {film.pays_film}, {film.duree_film})
+    </p>
+
+    <p class="text-sm text-gray-600">
+      <span class="font-semibold">Réalisation :</span>
+      {film.realisateur_film}
+    </p>
+
+    <p class="text-sm">{film.date_film}</p>
+    <p class="text-xl font-bold">{film.heure_film}</p>
+    <p class="text-lg font-extrabold">{film.salle_film}</p>
+  </div>
+</article>

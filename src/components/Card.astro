@@ -1,0 +1,19 @@
+---
+import ImagePB from "./ImagePB.astro";
+const { ...invite } = Astro.props;
+console.log(invite);
+---
+
+<article class="flex flex-col gap-4">
+  <a href={`/invite/${invite.id}`}>
+    <ImagePB
+      record={invite}
+      field="photo_invite"
+      alt={invite.photo_invite}
+      classPicture="duotone col-start-1 row-start-1 col-span-2 row-span-2 group-hover:before:bg-black"
+      classImg="group-hover:grayscale-0 group-hover:mix-blend-normal"
+    />
+  </a>
+  <h3>{invite.titre_invite}</h3>
+  <p>{invite.description_invite}</p>
+</article>

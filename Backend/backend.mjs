@@ -1,5 +1,7 @@
+import { record } from 'astro:schema';
 import PocketBase from 'pocketbase';
 const pb = new PocketBase('http://127.0.0.1:8090');
+export { pb };
 
 //retourne la liste de tous les films triés par date de projection
 export async function getFilms(){
@@ -91,19 +93,24 @@ export async function allActiviteByAnimateurName(nom) {
         return Records;
     }
 
-export const getInvite = async (collection = "invite") => {
+export async function getInvite(collection = "invite") {
   try {
-    const invite = await pb.collection(collection).getFullList();
-    // Ajoute l'URL complète de l'image à chaque maison
-    const updatedInvite = invite.map((invite) => ({
-      ...invite,
-      imageUrl: invite.photo_invite
-        ? pb.files.getUrl(invite, invite.photo_invite[0], { thumb: "1024x1024" })
-        : null,
-    }));
-    return updatedInvite;
+    let records = await pb.collection(collection).getFullList({sort: 'nom_invite', filter: 'role_invite = "Animateur et Membre du Jury"'});
+    return records;
+
   } catch (error) {
     console.error("Erreur lors de la récupération des événements :", error);
-    return []; // Retourne un tableau vide en cas d'erreur
+    return [];
   }
-};
+}
+
+export async function getInviteByID(id) {
+  try {
+    let records = await pb.collection("invite").getOne(id);
+    return records;
+
+  } catch (error) {
+    console.error("Erreur lors de la récupération des événements :", error);
+    return [];
+  }
+}

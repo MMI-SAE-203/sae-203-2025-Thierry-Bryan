@@ -1,4 +1,4 @@
-import {allActiviteByAnimateurName, updateFilm, updateActivity, updateInvite, addFilm, addActivity, addInvite, /*getActivitybyAnimatorID*/ oneFilmMaker, oneActivity, oneFilm, getFilms, getActivities, getFilmMaker} from "./backend.mjs";
+import {getInvite, allActiviteByAnimateurName, updateFilm, updateActivity, updateInvite, addFilm, addActivity, addInvite, /*getActivitybyAnimatorID*/ oneFilmMaker, oneActivity, oneFilm, getFilms, getActivities, getFilmMaker} from "./backend.mjs";
 
 /* Q1
 try {
@@ -147,3 +147,10 @@ catch (e) {
     console.error(e);
 }
 */
+
+try {
+  const records = await getInvite()
+  console.log(records)
+} catch (e) {
+  console.error(e)
+}

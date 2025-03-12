@@ -2,9 +2,26 @@
 import "../../styles/global.css";
 import LayoutWithHero from "../../layouts/LayoutWithHero.astro";
 import myImage from "../../assets/hero_page/hero_films.webp";
+import Card_films from "../../components/Card_films.astro";
 
-const title = "Ça va Trail’er";
-const heroAlt = "Description de l'image hero";
+import { getFilms } from "../../../Backend/backend.mjs";
+const invite = await getFilms();
+
+const title = "Les films";
+const heroAlt = "Image Hero de la page invité";
 ---
 
-<LayoutWithHero title={title} heroImage={myImage} heroAlt={heroAlt} />
+<LayoutWithHero title={title} heroImage={myImage} heroAlt={heroAlt}>
+  <div slot="chapo" class="grid">
+    <p>
+      Découvrez une sélection inspirante de films dédiés à l'univers du trail
+      running, mêlant dépassement de soi, aventure et paysages à couper le
+      souffle.
+    </p>
+  </div>
+  <div class="grille" slot="content">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {invite.map((i) => <Card_films {...i} />)}
+    </div>
+  </div>
+</LayoutWithHero>
