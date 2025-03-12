@@ -9,24 +9,44 @@ import Button from "../components/Button.astro";
 ---
 
 <footer
-  class="grid space-y-6 text-sm bg-black py-8 px-6 text-white items-center border-solid border-t-2 border-t-red-500"
+  class="grille space-y-6 text-sm bg-black py-8 px-6 text-white items-center border-solid border-t-2 border-t-red-500"
 >
-  <a class="flex items-center gap-5" href="/" aria-label="Accueil">
+  <a
+    class="flex items-center gap-5 lg:col-span-3 lg:col-start-0"
+    href="/"
+    aria-label="Accueil"
+  >
     <LogoFooter />
-    <h3 class="text-white">Ça va trail'er</h3>
+    <h3 class="uppercase text-white">Ça va trail'er</h3>
   </a>
-  <div class="flex justify-center mt-1.25 mb-2.25">
+  <div class="flex justify-center mt-1.25 mb-2.25 lg:col-span-0 lg:col-start-0">
     <Button variant="default" url="/signup" text="BILLETERIE" />
   </div>
-  <div class="text-white grid text-center">
-    <h3>Contact</h3>
-    <address>
+  <nav
+    class="flex flex-col items-center md:items-center mt-6 lg:col-span-3 lg:col-start-7"
+  >
+    <h3 class="mb-2 uppercase text-xl tracking-wide text-white lg:items-start">
+      MENU
+    </h3>
+    <ul class="flex flex-col space-y-2 items-center">
+      <li><a href="/page1" class="hover:underline">Contact</a></li>
+      <li><a href="/page2" class="hover:underline">A propos</a></li>
+      <li><a href="/page3" class="hover:underline">En savoir plus</a></li>
+    </ul>
+  </nav>
+  <div class="text-white grid text-center lg:col-span-3 lg:col-start-10">
+    <h3 class="text-xl mb-2">CONTACT</h3>
+    <address class="not-italic lg:items-start">
+      1 rue Paul Koepfler<br />90000 Belfort<br />
+      <a href="tel:0384542727">03 84 54 27 27</a><br />
       <a href="mailto:cavatrailer@festival.com">cavatrailer@festival.com</a>
     </address>
   </div>
-  <div class="grid">
-    <h3 class="flex justify-center">Nous suivre</h3>
-    <ul class="grid grid-cols-5 justify-between items-center">
+  <div
+    class="flex flex-col items-center  md:justify-center space-y-4 md:space-y-0 md:space-x-6 lg:col-span-3 lg:col-start-10"
+  >
+    <h3 class="flex justify-center text-xl mb-2">NOUS SUIVRE</h3>
+    <ul class="flex items-center gap-10">
       <li>
         <a href="https://facebook.com" aria-label="facebook">
           <IconFacebook />
@@ -54,9 +74,9 @@ import Button from "../components/Button.astro";
       </li>
     </ul>
   </div>
-  <div class="text-white">
-    <h3 class="text-center">MENTIONS LÉGALES</h3>
-    <p>
+  <div class="text-white lg:col-span-6 lg:col-start-5">
+    <h3 class="text-center text-xl lg:text-start">MENTIONS LÉGALES</h3>
+    <p class="text-center lg:text-start">
       © 2024 Ça va trail’er Festival - Tous droits réservés <br />
       [Mentions légales] | [Politique de confidentialité] | [Conditions générales]
     </p>

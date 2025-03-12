@@ -3,6 +3,7 @@
 @theme {
     --font-sans: 'Montserrat Variable', sans-serif;
     --anton: 'Anton', sans-serif;
+    --my-grid: repeat(12, minmax(0, 64px));
 }
 /*
 @layer base {

@@ -1,14 +1,12 @@
 ---
 import "../../styles/global.css";
 import LayoutWithHero from "../../layouts/LayoutWithHero.astro";
-import myImage from "../../assets/hero_page/hero_invites.webp";
+import myImage from "../../assets/hero_page/hero_films.webp";
 import ImagePB from "../../components/ImagePB.astro";
-
-import { getFilm } from "../../../Backend/backend.mjs";
 import { getFilmByID } from "../../../Backend/backend.mjs";
 
 const { id } = Astro.params;
-const film = await getIFilmByID(id);
+const film = await getFilmByID(id);
 
 if (!film) {
   return Astro.redirect("/films");
@@ -17,33 +15,64 @@ if (!film) {
 const heroAlt = "Image Hero de la page invité";
 ---
 
-<LayoutWithHero
-  title={film.titre_film}
-  heroImage={myImage}
-  heroAlt={heroAlt}
->
+<LayoutWithHero title={film.titre_film} heroImage={myImage} heroAlt={heroAlt}>
   <div slot="chapo" class="grid">
     <p>
-      {invite.chapo_invite}
+      {film.chapo_film}
     </p>
   </div>
-  <div class="grille" slot="content">
-    <div>
+  <section
+    slot="content"
+    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 items-start"
+  >
+    <!-- Colonne 1 : Affiche du film -->
+    <div class="w-full rounded-xl overflow-hidden border-2 border-red-700">
       <ImagePB
-        record={invite}
-        field="photo_invite"
-        alt={invite.photo_invite}
-        classPicture="duotone col-start-1 row-start-1 col-span-2 row-span-2 group-hover:before:bg-black"
-        classImg="group-hover:grayscale-0 group-hover:mix-blend-normal"
+        record={film}
+        field="affiche_film"
+        alt={film.titre_film}
+        classPicture="w-full h-full rounded-xl"
+        classImg="w-full h-full object-cover"
       />
     </div>
-    <div class="flex flex-col gap-4 mb-10">
-      <h3 class="mt-4">Biographie</h3>
-      <p>{invite.bio_invite}</p>
+
+    <!-- Colonne 2 : Infos + description -->
+    <div class="flex flex-col gap-4">
+      <!-- Date et salle -->
+      <div class="text-center lg:text-left">
+        <p class="font-bold">{film.date_projection}</p>
+        <p class="text-3xl font-extrabold">{film.heure_projection}</p>
+        <p class="font-bold text-lg">{film.salle_film}</p>
+      </div>
+
+      <!-- Réalisateur -->
+      <p class="text-sm text-gray-700">Réalisation : {film.realisateur_film.nom_invite}</p>
+
+      <!-- Titre et détails -->
+      <h1 class="text-2xl font-bold uppercase">{film.titre_film}</h1>
+      <p class="text-gray-600 italic text-sm">
+        {film.pays} - {film.duree_film} minutes
+      </p>
+
+      <!-- Description -->
+      <p class="text-sm text-gray-800">{film.description_film}</p>
     </div>
+  </section>
+  <div slot="content" class="flex flex-col justify-center mt-10 gap-10">
+    <video class="w-full" width="640" height="360" controls>
+      <source
+        src="../../assets/videos/teaser_vers-les-sommets.mp4"
+        type="video/mp4"
+      />
+      Votre navigateur ne supporte pas la balise vidéo.
+    </video>
     <div>
-      <h3>Intervention</h3>
-      <p>{invite.intervention}</p>
+          <div class="mt-4 p-4 border-l-4 border-red-700 bg-gray-100 rounded-md">
+            <h3 class="text-lg font-semibold">
+              À propos du réalisateur : {film.realisateur_film.nom_invite}
+            </h3>
+            <p class="text-sm text-gray-800"></p>
+          </div>
     </div>
   </div>
 </LayoutWithHero>

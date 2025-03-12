@@ -50,14 +50,15 @@ export async function getActivityAnimatorID(animatorId){
     return Records;
 }
 
-// Pas fini et pas compris
-export async function getActivitybyAnimatorName(animatorName){
-    const Records = await pb.collection('invite').getFullList({filter: `nom_invite = "${animatorName}"`});
-    return Records;
-}
-
+// retourne toutes les activités d’un animateur donné par son nom
 export async function allActiviteByAnimateurName(nom) {
   const Records = await pb.collection("activite").getFullList({filter: `animateur.nom_invite = '${nom}'`, expand: "animateur"});
+  return Records;
+}
+
+
+export async function getBioRealisatorByMovie(bio) {
+  const Records = await pb.collection("film").getFullList({filter: `invite.bio_invite = '${bio}'`, expand: "invite"});
   return Records;
 }
 
@@ -112,5 +113,17 @@ export async function getInviteByID(id) {
   } catch (error) {
     console.error("Erreur lors de la récupération des événements :", error);
     return [];
+  }
+}
+
+export async function getFilmByID(id) {
+  try {
+    let records = await pb.collection("film").getOne(id, {
+      expand: "realisateur_film" 
+    });
+    return records;
+  } catch (error) {
+    console.error("Erreur lors de la récupération du film :", error);
+    return null;
   }
 }
