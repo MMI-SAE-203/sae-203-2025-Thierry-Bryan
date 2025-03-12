@@ -8,7 +8,7 @@ const { ...film } = Astro.props;
 >
   <!-- Affiche du film -->
   <a href={`/films/${film.id}`} class="w-full">
-    <div class="w-full rounded-xl overflow-hidden">
+    <div class="w-full rounded-t-xl overflow-hidden">
       <ImagePB
         record={film}
         field="affiche_film"
@@ -20,19 +20,18 @@ const { ...film } = Astro.props;
 
     <!-- Informations du film -->
     <div class="flex flex-col gap-2 p-4">
-      <h3 class="text-lg font-bold">{film.titre_film}</h3>
-      <p class="text-gray-500">
-        ({film.annee_sortie}, {film.pays}, {film.duree_film} minutes)
+      <h3 class="text-xl font-bold">{film.titre_film}</h3>
+      <p class="text-gray-600">
+      {film.annee_sortie} - {film.pays}
       </p>
-
-      <p class="text-sm text-gray-600">
-        <span class="font-semibold">Réalisateur :</span>
-        {film.realisateur_film}
+      <p class="text-sm text-gray-700">
+      <span class="font-medium">Durée :</span> {film.duree_film} minutes
       </p>
-
-      <p class="text-sm">{film.date_film}</p>
-      <p class="text-xl font-bold">{film.heure_film}</p>
-      <p class="text-lg font-extrabold">{film.salle_film}</p>
+      <p class="text-sm text-gray-700">
+      <span class="font-medium">Réalisateur :</span> {film.realisateur_film}
+      </p>
+      <p class="text-sm text-gray-600">{film.date_projection}</p>
+      <p class="text-lg font-bold text-red-700">{film.salle_film}</p>
     </div>
   </a>
 </article>

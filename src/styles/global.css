@@ -48,7 +48,7 @@
     }
 
     main a {
-        @apply text-indigo-500;
+        @apply text-red-700;
     }
 }
 
