@@ -1,0 +1,19 @@
+---
+import Button from "../components/Button.astro";
+
+export interface Props {
+  subtitle: string;
+  description: string;
+  buttonUrl: string;
+  buttonText: string;
+}
+const { subtitle, description, buttonUrl, buttonText } = Astro.props;
+---
+
+<div class="grid gap-4 mb-10">
+  <h3>{subtitle}</h3>
+  <p>{description}</p>
+  <div class="flex justify-center">
+    <Button variant="default" url={buttonUrl} text={buttonText} />
+  </div>
+</div>

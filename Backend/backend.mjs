@@ -90,3 +90,20 @@ export async function allActiviteByAnimateurName(nom) {
         const Records = await pb.collection('activite').update(data, id);
         return Records;
     }
+
+export const getInvite = async (collection = "invite") => {
+  try {
+    const invite = await pb.collection(collection).getFullList();
+    // Ajoute l'URL complète de l'image à chaque maison
+    const updatedInvite = invite.map((invite) => ({
+      ...invite,
+      imageUrl: invite.photo_invite
+        ? pb.files.getUrl(invite, invite.photo_invite[0], { thumb: "1024x1024" })
+        : null,
+    }));
+    return updatedInvite;
+  } catch (error) {
+    console.error("Erreur lors de la récupération des événements :", error);
+    return []; // Retourne un tableau vide en cas d'erreur
+  }
+};

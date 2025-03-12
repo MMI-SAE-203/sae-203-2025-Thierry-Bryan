@@ -21,29 +21,34 @@
         overflow: hidden;
     }
 }
+@layer base {
+    body {
+        @apply font-sans text-base leading-normal;
+    }
 
-.hero-container {
-    position: relative;
-    top: -750px;
-    height: 80vh;
-    /* Assurez-vous que le conteneur a une hauteur fixe */
-    overflow: hidden;
-    /* Cache tout débordement */
-}
+    h1 {
+        @apply text-red-800 text-4xl leading-tight lg:text-4xl;
+    }
 
-.hero-image img {
-    max-height: 80vh;
-    /* Limite la hauteur de l'image à 80% de la hauteur de la fenêtre */
-    width: auto;
-    object-fit: contain;
-    /* Assure que l'image reste contenue dans son conteneur */
-}
+    h2 {
+        @apply text-xl leading-tight lg:text-2xl;
+    }
 
-/* Styles spécifiques pour les mobiles */
-@media (max-width: 600px) {
-    .hero-image img {
-        transform: scale(2);
-        transform-origin: center;
+    h3 {
+        @apply text-lg leading-tight;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply font-bold;
+    }
+
+    main a {
+        @apply text-indigo-500;
     }
 }
 

@@ -5,6 +5,7 @@ import IconInstagram from "../assets/icons/icon_insta-blanc.svg";
 import IconTikTok from "../assets/icons/icon_tiktok-blanc.svg";
 import IconYoutube from "../assets/icons/icon_youtube-blanc.svg";
 import IconStrava from "../assets/icons/icon_strava-blanc.svg";
+import Button from "../components/Button.astro";
 ---
 
 <footer
@@ -15,10 +16,7 @@ import IconStrava from "../assets/icons/icon_strava-blanc.svg";
     <h3 class="text-white">Ça va trail'er</h3>
   </a>
   <div class="flex justify-center mt-1.25 mb-2.25">
-    <a
-      class="border-solid border-2 border-red-500 py-1.25 px-2.25 bg-white rounded-3xl"
-      href="">BILLETERIE</a
-    >
+    <Button variant="default" url="/signup" text="BILLETERIE" />
   </div>
   <div class="text-white grid text-center">
     <h3>Contact</h3>

@@ -3,31 +3,36 @@ import Base from "../layouts/Base.astro";
 import { Picture } from "astro:assets";
 import myImage from "../assets/hero_page/hero_accueil.webp";
 
-const { title, classContent = "max-w-2xl mx-6 my-16 lg:mx-auto", heroImage, heroAlt} = Astro.props;
+const {
+  title,
+  classContent = "max-w-2xl mx-6 my-8 lg:mx-auto",
+  heroImage,
+  heroAlt,
+} = Astro.props;
 ---
 
 <Base title="Titre de la page" description="Description de la page">
-  <div
-    class="grid h-screen grid-rows-[4fr_1fr] relative lg:grid-rows-[3fr_1fr]"
-  >
-    <div class="my-100 space-y-8 self-end text-black z-[2] lg:col-span-9">
-      <h1>{title}</h1>
-    </div>
+  <div class="">
+    <Picture
+      pictureAttributes={{
+        class: "",
+      }}
+      class="object-cover w-full h-100"
+      formats={["avif", "webp"]}
+      src={heroImage}
+      alt={heroAlt}
+      widths={[540, 1024, myImage.width]}
+      sizes={`(max-width: 540px) 540px, (max-width: 1024px) 1024px, ${myImage.width}px`}
+    />
+  </div>
+  <div class={classContent}>
+    <h1 class="">{title}</h1>
     <div>
       <slot name="chapo" />
     </div>
-    <div class="hero-container">
-      <Picture
-        pictureAttributes={{
-          class: "absolute inset-0 object-cover hero-image",
-        }}
-        formats={["avif", "webp"]}
-        src={heroImage}
-        alt={heroAlt}
-        widths={[540, 1024, myImage.width]}
-        sizes={`(max-width: 540px) 540px, (max-width: 1024px) 1024px, ${myImage.width}px`}
-      />
-    </div>
+  </div>
+  <div>
+    <hr class="max-w-2xl mx-20 lg:mx-auto border-gray-400" />
   </div>
   <div class={classContent}>
     <slot name="content" />

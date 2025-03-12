@@ -1,0 +1,14 @@
+---
+const { ...invite } = Astro.props;
+---
+
+<article>
+  <a href={`/properties/${invite.id}`}>
+    <Picture
+      pictureAttributes={{ class: "block rounded-t-lg overflow-hidden" }}
+      inferSize={true}
+      src={house.imageUrl}
+      alt=""
+    />
+  </a>
+</article>

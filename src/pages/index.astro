@@ -2,9 +2,57 @@
 import "../styles/global.css";
 import LayoutWithHero from "../layouts/LayoutWithHero.astro";
 import myImage from "../assets/hero_page/hero_accueil.webp";
+import Button from "../components/Button.astro";
+import Card_accueil from "../components/Card_accueil.astro";
 
 const title = "Ça va Trail’er";
 const heroAlt = "Description de l'image hero";
 ---
 
-<LayoutWithHero title={title} heroImage={myImage} heroAlt={heroAlt} />
+<LayoutWithHero title={title} heroImage={myImage} heroAlt={heroAlt}>
+  <div slot="chapo" class="grid">
+    <h2 class="mb-8">
+      La prochaine édition de “Ça va trailer” ce déroulera du 15 au 21 avril
+      2025
+    </h2>
+    <div class="flex justify-center mt-1.25 mb-8">
+      <Button variant="default" url="/signup" text="BILLETERIE" />
+    </div>
+    <div>
+      <p>
+        Le festival "Ça va trai'ler", situé à Belfort du 15 au 21 avril 2025,
+        célèbre le trail running à travers des projections de films inspirants
+        et des rencontres avec les cinéastes et les athlètes. Ce rendez-vous
+        unique offre une immersion au cœur de ce sport exigeant, mettant en
+        avant les défis, la nature sauvage et la détermination des athlètes à
+        travers des récits captivants.
+      </p>
+    </div>
+  </div>
+  <div slot="content">
+    <Card_accueil
+      subtitle="Programme"
+      description=`La programmation de "Ça va trai'ler" offre une sélection de films immersifs, courts métrages et trailers réalisés par de nouveaux artistes en collaboration avec des athlètes, mettant en lumière l'énergie et la passion du trail running.`
+      buttonUrl="/signup"
+      buttonText="PROGRAMME"
+    />
+    <Card_accueil
+      subtitle="Invité"
+      description=`Des invités d'exception au rendez-vous ! Rencontrez des artistes, réalisateurs et intervenants passionnants qui feront de ce festival une expérience unique et inoubliable.`
+      buttonUrl="./invites"
+      buttonText="INVITÉS"
+    />
+    <Card_accueil
+      subtitle="Billeterie"
+      description=`Réservez vos billets pour "Ça va trail’er" et vivez une expérience unique autour du trail running à Belfort, du 15 au 21 avril 2025 !`
+      buttonUrl="/signup"
+      buttonText="BILLETERIE"
+    />
+    <Card_accueil
+      subtitle="Infos pratiques"
+      description=`Préparez votre venue au festival ! Découvrez toutes les informations essentielles pour organiser votre expérience : accès, hébergements, lieux et billetterie gratuite.`
+      buttonUrl="/signup"
+      buttonText="INFOS PRATIQUES"
+    />
+  </div>
+</LayoutWithHero>
