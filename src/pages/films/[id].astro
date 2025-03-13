@@ -21,6 +21,12 @@ const heroAlt = "Image Hero de la page invité";
       {film.chapo_film}
     </p>
   </div>
+  <button
+    onclick="history.back()"
+    class="mb-6 px-4 py-2 bg-primary text-red-700 font-bold rounded-md hover:bg-primary-dark transition-colors"
+  slot="content">
+    &larr; Retour
+  </button>
   <section
     slot="content"
     class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 items-start"
@@ -37,17 +43,21 @@ const heroAlt = "Image Hero de la page invité";
 
     <div class="flex flex-col gap-4">
       <div class="text-center lg:text-left">
-        {film.date_projection && (
-          <p class="font-bold">{
-            new Date(film.date_projection).toLocaleDateString('fr-FR', {
-              weekday: 'long',
-              day: 'numeric',
-              month: 'long',
-              hour: '2-digit',
-              minute: '2-digit'
-            }).replace(' à ', ' - ')
-          }</p>
-        )}
+        {
+          film.date_projection && (
+            <p class="font-bold">
+              {new Date(film.date_projection)
+                .toLocaleDateString("fr-FR", {
+                  weekday: "long",
+                  day: "numeric",
+                  month: "long",
+                  hour: "2-digit",
+                  minute: "2-digit",
+                })
+                .replace(" à ", " - ")}
+            </p>
+          )
+        }
 
         <p class="font-bold text-lg">{film.salle_film}</p>
       </div>
