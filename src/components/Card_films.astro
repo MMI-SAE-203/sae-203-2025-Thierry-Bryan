@@ -22,7 +22,7 @@ const { ...film } = Astro.props;
     <div class="flex flex-col gap-2 p-4">
       <h2 class="text-xl font-bold">{film.titre_film}</h2>
       <p class="text-gray-600">
-        {film.annee_sortie} - {film.pays}
+        {new Date(film.annee_sortie).getFullYear()} - {film.pays}
       </p>
       <p class="text-sm text-gray-700">
         <span class="font-medium">Durée :</span>
@@ -33,7 +33,14 @@ const { ...film } = Astro.props;
         {film.expand?.realisateur_film.prenom_invite}
         {film.expand?.realisateur_film.nom_invite}
       </p>
-      <p class="text-sm text-gray-600">{film.date_projection}</p>
+      <p class="text-sm text-gray-600">
+        {new Date(film.date_projection).toLocaleDateString('fr-FR', {
+          weekday: 'long',
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric',
+        })}
+      </p>
       <p class="text-lg font-bold text-red-700">{film.salle_film}</p>
     </div>
   </a>

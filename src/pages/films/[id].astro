@@ -25,7 +25,6 @@ const heroAlt = "Image Hero de la page invité";
     slot="content"
     class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 items-start"
   >
-    <!-- Colonne 1 : Affiche du film -->
     <div class="w-full rounded-xl overflow-hidden border-2 border-red-700">
       <ImagePB
         record={film}
@@ -36,28 +35,30 @@ const heroAlt = "Image Hero de la page invité";
       />
     </div>
 
-    <!-- Colonne 2 : Infos + description -->
     <div class="flex flex-col gap-4">
-      <!-- Date et salle -->
       <div class="text-center lg:text-left">
-        <p class="font-bold">{film.date_projection}</p>
-        <p class="text-3xl font-extrabold">{film.heure_projection}</p>
+        {film.date_projection && (
+          <p class="font-bold">{
+            new Date(film.date_projection).toLocaleDateString('fr-FR', {
+              weekday: 'long',
+              day: 'numeric',
+              month: 'long',
+              hour: '2-digit',
+              minute: '2-digit'
+            }).replace(' à ', ' - ')
+          }</p>
+        )}
+
         <p class="font-bold text-lg">{film.salle_film}</p>
       </div>
-
-      <!-- Réalisateur -->
       <p class="text-sm text-gray-700">
         Réalisation : {film.expand?.realisateur_film.prenom_invite}
         {film.expand?.realisateur_film.nom_invite}
       </p>
-
-      <!-- Titre et détails -->
       <h1 class="text-2xl font-bold uppercase">{film.titre_film}</h1>
       <p class="text-gray-600 italic text-sm">
         {film.pays} - {film.duree_film} minutes
       </p>
-
-      <!-- Description -->
       <p class="text-sm text-gray-800">{film.description_film}</p>
     </div>
   </section>
