@@ -1,0 +1,114 @@
+---
+// src/components/FAQ.astro
+const faqItems = [
+    {
+        question: "Comment s'inscrire au festival ?",
+        answer:
+            "Réservez vos billets gratuitement en ligne via notre billetterie. Une fois votre réservation effectuée, vous recevrez un billet avec un QR code par e-mail.",
+    },
+    {
+        question: "Le festival est-il vraiment gratuit ?",
+        answer:
+            "Oui, l'entrée est 100 % gratuite. Il suffit de réserver votre billet en ligne via notre billetterie.",
+    },
+    {
+        question: "Y a-t-il des activités pour les enfants ?",
+        answer:
+            "Oui, des ateliers et animations spécialement conçus pour les enfants seront organisés.",
+    },
+    {
+        question: "Puis-je venir sans billet ?",
+        answer:
+            "Oui, mais nous recommandons de vous inscrire à l'avance pour garantir votre accès aux ateliers et projections.",
+    },
+    {
+        question: "Les animaux sont-ils autorisés ?",
+        answer: "Seuls les animaux d'assistance sont autorisés.",
+    },
+    {
+        question: "Où peut-on manger sur place ?",
+        answer:
+            "Des stands de restauration rapide et un espace pique-nique seront disponibles sur le site.",
+    },
+    {
+        question: "Y a-t-il des offres spéciales pour les groupes ?",
+        answer:
+            "Oui, un Billet Groupe est disponible pour 3 à 5 personnes, parfait pour les familles ou amis.",
+    },
+    {
+        question: "Que faire si je ne peux pas venir après avoir réservé ?",
+        answer:
+            "Pas de souci ! Informez-nous via l'e-mail de confirmation pour libérer votre place.",
+    },
+    {
+        question: "Y a-t-il des parkings à proximité ?",
+        answer:
+            "Oui, plusieurs parkings gratuits sont disponibles à quelques minutes à pied des lieux principaux du festival.",
+    },
+];
+---
+
+<div class="faq-container max-w-2xl mx-auto p-6 space-y-4">
+    {
+        faqItems.map((item, index) => (
+            <div class="faq-item border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                <div
+                    class="faq-question bg-gray-50 p-4 flex justify-between items-center cursor-pointer hover:bg-gray-100 transition-colors"
+                    data-index={index}
+                >
+                    <span class="font-medium text-gray-800">{item.question}</span>
+                    <span class="faq-icon text-xl text-gray-600 font-medium transition-transform duration-300">+</span>
+                </div>
+                <div class="faq-answer bg-white overflow-hidden max-h-0 transition-all duration-300 ease-in-out">
+                    <p class="p-4 text-gray-600">{item.answer}</p>
+                </div>
+            </div>
+        ))
+    }
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const questions = document.querySelectorAll('.faq-question');
+        
+        questions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const icon = question.querySelector('.faq-icon');
+                
+                // Check if this answer is already open
+                const isOpen = answer.classList.contains('active');
+                
+                // Close all answers first
+                document.querySelectorAll('.faq-answer').forEach(el => {
+                    el.classList.remove('active');
+                    el.style.maxHeight = '0px';
+                    el.previousElementSibling.querySelector('.faq-icon').textContent = '+';
+                    el.previousElementSibling.querySelector('.faq-icon').classList.remove('rotate-45');
+                });
+                
+                // Toggle current answer
+                if (!isOpen) {
+                    answer.classList.add('active');
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                    icon.textContent = '-';
+                    icon.classList.add('rotate-45');
+                }
+            });
+        });
+    });
+</script>
+
+<style>
+    .faq-answer {
+        max-height: 0;
+    }
+    
+    .faq-icon {
+        transition: transform 0.3s ease;
+    }
+    
+    .rotate-45 {
+        transform: rotate(45deg);
+    }
+</style>
