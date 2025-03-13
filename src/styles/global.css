@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-@theme {
+:root {
     --font-sans: 'Montserrat Variable', sans-serif;
     --anton: 'Anton', sans-serif;
     --my-grid: repeat(12, minmax(0, 64px));
@@ -10,7 +10,8 @@
 h1,
 h2,
 h3 {
-    @apply anton font-normal;
+    font-family: 'Anton', sans-serif;
+    font-weight: normal;
 }
 }
 

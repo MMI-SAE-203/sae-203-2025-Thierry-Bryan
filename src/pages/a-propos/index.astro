@@ -2,14 +2,8 @@
 import "../../styles/global.css";
 import LayoutWithHero from "../../layouts/LayoutWithHero.astro";
 import myImage from "../../assets/hero_page/hero_a-propos.webp";
-import ContactForm from "../../components/ContactForm.astro";
 import { getFilms } from "../../../Backend/backend.mjs";
-
-import IconFacebook from "../../assets/icons/icon_facebook-noir.svg";
-import IconInstagram from "../../assets/icons/icon_insta-noir.svg";
-import IconTikTok from "../../assets/icons/icon_tiktok-noir.svg";
-import IconYoutube from "../../assets/icons/icon_youtube-noir.svg";
-import IconStrava from "../../assets/icons/icon_strava-noir.svg";
+import Paragraphe from "../../components/Paragraphe.astro";
 
 const invite = await getFilms();
 
@@ -26,5 +20,33 @@ const heroAlt = "Image Hero de la page a propos";
     </p>
   </div>
   <div class="grid justify-center" slot="content">
+    <Paragraphe
+      subtitle="Notre Histoire"
+      description=`Le Festival de Cinéma de Trail de Bavilliers est né en [année de création] d’une passion commune pour le sport et l’image. Ce festival unique en son genre célèbre la beauté du trail running à travers des œuvres cinématographiques inspirantes.
+        Objectifs principaux :
+        Mettre en lumière des films et documentaires explorant l’univers du trail, des grands défis sportifs aux aventures humaines.
+        Valoriser les paysages naturels et les histoires de dépassement de soi.
+        Créer un espace de rencontre entre cinéphiles, sportifs et réalisateurs.`
+    />
+    <Paragraphe
+      subtitle="Notre équipe"
+      description=`Notre équipe est composée de passionnés de cinéma, de trail running et de nouvelles technologies, qui partagent la même envie de rendre cet événement accessible, convivial et unique.
+        Organisateurs : Une équipe composée de sportifs, cinéastes et amoureux de la nature, unis par leur volonté de promouvoir le cinéma lié au trail running.
+        Équipe technique : Professionnels du cinéma et du sport, assurant des projections de qualité et une organisation sans faille.
+        Bénévoles : Des membres essentiels qui participent à l’accueil, à la logistique et à l’accompagnement des invités.
+        Partenaires : Des marques et institutions locales et spécialisées dans le trail, le sport et le cinéma.
+
+        Nous avons hâte de vous accueillir pour cette première édition de "Ça va trail’er" à Belfort !`
+    />
+    <Paragraphe
+      subtitle="Chartre : L’esprit de l’édition 2025"
+      description=`Cette année, le festival explore la thématique "L’homme face à la montagne".
+        Nos valeurs :
+        Inspiration : Mettre en avant des histoires captivantes qui célèbrent le dépassement de soi et la beauté de la nature.
+        Respect de l’environnement : Favoriser un événement durable et écoresponsable, en harmonie avec les valeurs du trail.
+        Accessibilité : Projections gratuites  pour que chacun puisse découvrir ces récits inspirants.
+        Communauté : Encourager les échanges entre cinéastes, traileurs et spectateurs autour de leur passion commune.
+        Innovation : Ça va trai'ler" explore l'avenir du cinéma en intégrant technologies innovantes comme la réalité virtuelle et les créations par intelligence artificielle.`
+    />
   </div>
 </LayoutWithHero>
