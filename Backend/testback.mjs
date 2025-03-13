@@ -1,4 +1,4 @@
-import {getBioRealisatorByMovie, getInvite, allActiviteByAnimateurName, updateFilm, updateActivity, updateInvite, addFilm, addActivity, addInvite, /*getActivitybyAnimatorID*/ oneFilmMaker, oneActivity, oneFilm, getFilms, getActivities, getFilmMaker} from "./backend.mjs";
+import {getFilmByID, getBioRealisatorByMovie, getInvite, allActiviteByAnimateurName, updateFilm, updateActivity, updateInvite, addFilm, addActivity, addInvite, /*getActivitybyAnimatorID*/ oneFilmMaker, oneActivity, oneFilm, getFilms, getActivities, getFilmMaker} from "./backend.mjs";
 
 /* Q1
 try {
@@ -8,6 +8,7 @@ try {
     console.error(e);
 }
 */
+
 
 /* Q2
 try {
@@ -159,7 +160,7 @@ try {
 
 
 try {
-  const records = await getBioRealisatorByMovie("Je suis un réalisateur")
+  const records = await getFilmByID("z3915p16ov65v1i")
   console.log(records)
 } catch (e) {
   console.error(e)

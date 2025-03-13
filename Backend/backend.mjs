@@ -1,11 +1,13 @@
-import { record } from 'astro:schema';
 import PocketBase from 'pocketbase';
 const pb = new PocketBase('http://127.0.0.1:8090');
 export { pb };
 
 //retourne la liste de tous les films triés par date de projection
 export async function getFilms(){
-    const Records = await pb.collection('film').getFullList({sort: 'date_projection'});
+    const Records = await pb.collection('film').getFullList({
+        sort: 'date_projection',
+        expand: 'realisateur_film'
+    });
     return Records;
 }
 
