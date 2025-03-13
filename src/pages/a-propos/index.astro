@@ -1,0 +1,30 @@
+---
+import "../../styles/global.css";
+import LayoutWithHero from "../../layouts/LayoutWithHero.astro";
+import myImage from "../../assets/hero_page/hero_a-propos.webp";
+import ContactForm from "../../components/ContactForm.astro";
+import { getFilms } from "../../../Backend/backend.mjs";
+
+import IconFacebook from "../../assets/icons/icon_facebook-noir.svg";
+import IconInstagram from "../../assets/icons/icon_insta-noir.svg";
+import IconTikTok from "../../assets/icons/icon_tiktok-noir.svg";
+import IconYoutube from "../../assets/icons/icon_youtube-noir.svg";
+import IconStrava from "../../assets/icons/icon_strava-noir.svg";
+
+const invite = await getFilms();
+
+const title = "À propos";
+const heroAlt = "Image Hero de la page a propos";
+---
+
+<LayoutWithHero title={title} heroImage={myImage} heroAlt={heroAlt}>
+  <div slot="chapo" class="grid">
+    <p class="font-bold mt-3">
+      Pour toute question, suggestion ou demande d'information concernant le
+      festival "Ça va trai'ler", n'hésitez pas à nous écrire. Nous serons ravis
+      de vous aider !
+    </p>
+  </div>
+  <div class="grid justify-center" slot="content">
+  </div>
+</LayoutWithHero>
