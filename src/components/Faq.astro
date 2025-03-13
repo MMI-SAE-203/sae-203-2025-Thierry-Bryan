@@ -1,5 +1,4 @@
 ---
-// src/components/FAQ.astro
 const faqItems = [
     {
         question: "Comment s'inscrire au festival ?",
@@ -76,10 +75,8 @@ const faqItems = [
                 const answer = question.nextElementSibling;
                 const icon = question.querySelector('.faq-icon');
                 
-                // Check if this answer is already open
                 const isOpen = answer.classList.contains('active');
                 
-                // Close all answers first
                 document.querySelectorAll('.faq-answer').forEach(el => {
                     el.classList.remove('active');
                     el.style.maxHeight = '0px';
@@ -87,7 +84,6 @@ const faqItems = [
                     el.previousElementSibling.querySelector('.faq-icon').classList.remove('rotate-45');
                 });
                 
-                // Toggle current answer
                 if (!isOpen) {
                     answer.classList.add('active');
                     answer.style.maxHeight = answer.scrollHeight + 'px';
