@@ -13,14 +13,14 @@ const heroAlt = "Image Hero de la page invité";
 
 <LayoutWithHero title={title} heroImage={myImage} heroAlt={heroAlt}>
   <div slot="chapo" class="grid">
-    <p>
+    <p class="font-bold mt-3">
       Découvrez une sélection inspirante de films dédiés à l'univers du trail
       running, mêlant dépassement de soi, aventure et paysages à couper le
       souffle.
     </p>
   </div>
   <div class="grid justify-center" slot="content">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {invite.map((i) => <Card_films {...i} />)}
     </div>
   </div>

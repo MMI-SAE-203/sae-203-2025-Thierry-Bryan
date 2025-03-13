@@ -29,6 +29,12 @@ export async function oneFilm(id){
     return Records;
 }
 
+//retourne les infos d'un programme en donnant son id en paramètre
+export async function getProgramme(){
+    const Records = await pb.collection('programme').getFullList();
+    return Records;
+}
+
 //retourne les infos d'une activité en donnant son id en paramètre
 export async function oneActivity(id){
     const Records = await pb.collection('activite').getOne(id);

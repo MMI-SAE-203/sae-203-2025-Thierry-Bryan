@@ -1,10 +1,58 @@
 ---
 import "../../styles/global.css";
 import LayoutWithHero from "../../layouts/LayoutWithHero.astro";
-import myImage from "../../assets/hero_page/hero_programme.webp";
+import myImage from "../../assets/hero_page/hero_invites.webp";
+import ImagePB from "../../components/ImagePB.astro";
 
-const title = "Ça va Trail’er";
-const heroAlt = "Description de l'image hero";
+import Programme from "../../components/Programme.astro";
+
+import { getProgramme } from "../../../Backend/backend.mjs";
+const programmes = await getProgramme();
+
+const title = "Programme";
+const heroAlt = "Image Hero de la page invité";
 ---
 
-<LayoutWithHero title={title} heroImage={myImage} heroAlt={heroAlt} />
+<LayoutWithHero title={title} heroImage={myImage} heroAlt={heroAlt}>
+  <div slot="chapo" class="grid">
+    <p class="font-bold mt-3">
+      Découvrez la programmation complète de "Ça va trai'ler" et plongez dans
+      une semaine riche en films, rencontres et ateliers autour du trail
+      running. Chaque jour, de nouvelles projections et événements vous
+      attendent pour une immersion totale dans l'univers du sport et de la
+      nature.
+    </p>
+  </div>
+  <div class="" slot="content">
+    <ul class="space-y-6">
+      {
+        programmes.map((programme, index) => (
+          <li
+            class={`flex flex-col ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"} items-start md:items-center md:space-x-4 space-y-4 md:space-y-0`}
+          >
+            <div class="relative w-full md:w-1/3">
+              <ImagePB
+                record={programme}
+                field="programme_img"
+                alt="Programme"
+                classPicture="rounded-lg"
+                classImg="w-full object-cover"
+                thumb="1024x1024"
+              />
+            </div>
+            <div class="flex-1">
+                <h3 class="text-xl font-bold mb-2">
+                {new Date(programme.programme_date).toLocaleDateString('fr-FR', {
+                  weekday: 'long',
+                  day: 'numeric',
+                  month: 'long'
+                }).replace(/^\w/, c => c.toUpperCase())}
+                </h3>
+              <p class="text-gray-700">{programme.programme_text}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</LayoutWithHero>
