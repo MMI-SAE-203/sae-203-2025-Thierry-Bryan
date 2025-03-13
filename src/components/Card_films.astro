@@ -1,13 +1,13 @@
 ---
 import ImagePB from "./ImagePB.astro";
+import IconLove from "../assets/icons/icon_love.svg";
 const { ...film } = Astro.props;
 ---
 
 <article
   class="flex flex-col gap-4 border-2 border-red-700 rounded-xl shadow-md max-w-xs text-center overflow-hidden"
 >
-  <!-- Affiche du film -->
-  <a href={`/films/${film.id}`} class="w-full">
+  <a href={`/films/${film.id}`} class="w-full relative">
     <div class="w-full rounded-t-xl overflow-hidden">
       <ImagePB
         record={film}
@@ -16,32 +16,93 @@ const { ...film } = Astro.props;
         classPicture="w-full h-full rounded-xl"
         classImg="w-full h-full object-cover"
       />
-    </div>
 
-    <!-- Informations du film -->
-    <div class="flex flex-col gap-2 p-4">
-      <h2 class="text-xl font-bold">{film.titre_film}</h2>
-      <p class="text-gray-600">
-        {new Date(film.annee_sortie).getFullYear()} - {film.pays}
-      </p>
-      <p class="text-sm text-gray-700">
-        <span class="font-medium">Durée :</span>
-        {film.duree_film} minutes
-      </p>
-      <p class="text-sm text-gray-700">
-        <span class="font-medium">Réalisateur :</span>
-        {film.expand?.realisateur_film.prenom_invite}
-        {film.expand?.realisateur_film.nom_invite}
-      </p>
-      <p class="text-sm text-gray-600">
-        {new Date(film.date_projection).toLocaleDateString('fr-FR', {
-          weekday: 'long',
-          day: 'numeric',
-          month: 'long',
-          year: 'numeric',
-        })}
-      </p>
-      <p class="text-lg font-bold text-red-700">{film.salle_film}</p>
+      <div class="absolute top-3 right-3">
+        <button
+          class="favorite-button border border-indigo-200 rounded-full p-2 bg-white shadow-md"
+          data-id={film.id}
+          data-favorite={film.favoris_film}
+        >
+          <IconLove
+            class={film.favoris_film ? "stroke-red-700" : "stroke-gray-400"}
+          />
+        </button>
+      </div>
+
+      <div class="flex flex-col gap-2 p-4">
+        <h2 class="text-xl font-bold">{film.titre_film}</h2>
+        <p class="text-gray-600">
+          {new Date(film.annee_sortie).getFullYear()} - {film.pays}
+        </p>
+        <p class="text-sm text-gray-700">
+          <span class="font-medium">Durée :</span>
+          {film.duree_film} minutes
+        </p>
+        <p class="text-sm text-gray-700">
+          <span class="font-medium">Réalisateur :</span>
+          {
+            film.expand?.realisateur_film
+              ? `${film.expand.realisateur_film.prenom_invite || ""} ${film.expand.realisateur_film.nom_invite || ""}`
+              : "Non spécifié"
+          }
+        </p>
+        <p class="text-sm text-gray-600">
+          {
+            new Date(film.date_projection).toLocaleDateString("fr-FR", {
+              weekday: "long",
+              day: "numeric",
+              month: "long",
+              year: "numeric",
+            })
+          }
+        </p>
+        <p class="text-lg font-bold text-red-700">{film.salle_film}</p>
+      </div>
     </div>
   </a>
 </article>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const favoriteButtons = document.querySelectorAll(".favorite-button");
+
+    favoriteButtons.forEach((button) => {
+      button.addEventListener("click", async (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const filmId = button.getAttribute("data-id");
+        const currentState = button.getAttribute("data-favorite") === "true";
+        const newState = !currentState;
+
+        try {
+          const response = await fetch(
+            `http://localhost:8090/api/collections/film/records/${filmId}`,
+            {
+              method: "PATCH",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ favoris_film: newState }),
+            }
+          );
+
+          if (response.ok) {
+            button.setAttribute("data-favorite", String(newState));
+
+            const svg = button.querySelector("svg");
+            if (newState) {
+              svg.classList.add("stroke-red-700");
+              svg.classList.remove("stroke-gray-400");
+            } else {
+              svg.classList.add("stroke-gray-400");
+              svg.classList.remove("stroke-red-700");
+            }
+          } else {
+            console.error("Erreur lors de la mise à jour du favori");
+          }
+        } catch (error) {
+          console.error("Erreur:", error);
+        }
+      });
+    });
+  });
+</script>
