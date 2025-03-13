@@ -5,7 +5,7 @@ const { ...film } = Astro.props;
 ---
 
 <article
-  class="flex flex-col gap-4 border-2 border-red-700 rounded-xl shadow-md max-w-xs text-center overflow-hidden"
+  class="flex flex-col gap-4 border-2 border-red-700 rounded-xl shadow-md max-w-xs text-center overflow-hidden transition-transform duration-300 hover:scale-105"
 >
   <a href={`/films/${film.id}`} class="w-full relative">
     <div class="w-full rounded-t-xl overflow-hidden">
