@@ -5,13 +5,14 @@
     --anton: 'Anton', sans-serif;
     --my-grid: repeat(12, minmax(0, 64px));
 }
-/*
+
 @layer base {
-    h3 {
-        @apply anton;
-    }
+h1,
+h2,
+h3 {
+    @apply anton font-normal;
 }
-*/
+}
 
 @layer components {
     .grille {
@@ -39,17 +40,7 @@
         @apply text-lg leading-tight;
     }
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        @apply font-bold;
-    }
-
     main a {
         @apply text-red-700;
     }
 }
-

@@ -1,19 +1,39 @@
 ---
 import Logo from "../assets/icons/icon_logo.svg";
+import IconFacebook from "../assets/icons/icon_facebook-noir.svg";
+import IconInstagram from "../assets/icons/icon_insta-noir.svg";
+import IconTikTok from "../assets/icons/icon_tiktok-noir.svg";
+import IconYoutube from "../assets/icons/icon_youtube-noir.svg";
+import IconStrava from "../assets/icons/icon_strava-noir.svg";
 ---
 
 <header
-  class="px-6 py-4 fixed z-10 w-full flex items-stretch justify-between transition-all duration-300 ease-in-out bg-black"
+  class="px-6 py-4 fixed z-10 w-full flex items-stretch justify-between transition-all duration-300 ease-in-out bg-black border-b-2 border-red-700"
 >
   <div class="flex items-center gap-2">
     <a href="/" aria-label="Accueil">
       <Logo />
     </a>
-    <h3 class="text-white">Ça va trai’ler</h3>
+    <h2 class="text-white">Ça va trai'ler</h2>
   </div>
 
+  <nav class="hidden lg:flex items-center">
+    <ul class="flex space-x-6 text-white">
+      <li><a class="block py-4 hover:text-red-500 transition-colors duration-200" href="/">Le festival</a></li>
+      <li><a class="block py-4 hover:text-red-500 transition-colors duration-200" href="/invite">Invités</a></li>
+      <li><a class="block py-4 hover:text-red-500 transition-colors duration-200" href="/programmes">Programme</a></li>
+      <li><a class="block py-4 hover:text-red-500 transition-colors duration-200" href="/films">Les films</a></li>
+      <li><a class="block py-4 hover:text-red-500 transition-colors duration-200" href="/billeterie">Billeterie</a></li>
+      <li><a class="block py-4 hover:text-red-500 transition-colors duration-200" href="/a-propos">À propos</a></li>
+      <li>
+        <a class="block py-4 hover:text-red-500 transition-colors duration-200" href="/infos-pratiques">Infos pratiques</a>
+      </li>
+      <li><a class="block py-4 hover:text-red-500 transition-colors duration-200" href="/contact">Contact</a></li>
+    </ul>
+  </nav>
+
   <button
-    class="group relative z-20 flex h-6 w-8 flex-col justify-between *:h-[2px] *:w-full *:bg-white *:transition-all *:duration-300 *:ease"
+    class="group relative z-20 flex h-6 w-8 flex-col justify-between self-center *:h-[2px] *:w-full *:bg-white *:transition-all *:duration-300 *:ease lg:hidden"
     id="menu-btn"
     aria-label="Menu"
     aria-controls="menu"
@@ -29,21 +49,68 @@ import Logo from "../assets/icons/icon_logo.svg";
   </button>
 
   <nav
-    class="visible fixed z-10 inset-0 bg-(--color-indigo) text-2xl text-black opacity-100 transition-all duration-300 ease-in-out aria-hidden:invisible aria-hidden:opacity-0 bg-white"
+    class="visible fixed z-10 inset-0 text-2xl text-black opacity-100 transition-all duration-300 ease-in-out aria-hidden:invisible aria-hidden:opacity-0 bg-white"
     id="menu"
     aria-hidden="true"
   >
-    <ul class="mt-[25vh] mx-16 text-center">
+    <ul class="mt-30 mx-16 text-center">
+      <li>
+        <a class="block px-5 py-4" href="/">Le festival</a>
+      </li>
+      <li>
+        <a class="block px-5 py-4" href="/invite">Invités</a>
+      </li>
+      <li>
+        <a class="block px-5 py-4" href="/programmes">Programme</a>
+      </li>
       <li>
         <a class="block px-5 py-4" href="/films">Les films</a>
       </li>
       <li>
-        <a class="block px-5 py-4" href="/invite">Les invités</a>
+        <a class="block px-5 py-4" href="/billeterie">Billeterie</a>
       </li>
       <li>
-        <a class="block px-5 py-4" href="/programmes">Le programme</a>
+        <a class="block px-5 py-4" href="/a-propos">À propos</a>
+      </li>
+      <li>
+        <a class="block px-5 py-4" href="/infos-pratiques">Infos pratiques</a>
+      </li>
+      <li>
+        <a class="block px-5 py-4" href="/contact">Contact</a>
       </li>
     </ul>
+    <div class="block md:hidden text-center mt-8">
+      <p class="text-red-700 font-semibold mb-2">NOUS SUIVRE</p>
+      <div class="flex items-center justify-center space-x-4">
+        <ul class="flex items-center gap-10">
+          <li>
+            <a href="https://facebook.com" aria-label="facebook">
+              <IconFacebook />
+            </a>
+          </li>
+          <li>
+            <a href="https://instagram.com" aria-label="instagram">
+              <IconInstagram />
+            </a>
+          </li>
+          <li>
+            <a href="https://youtube.com" aria-label="youtube">
+              <IconYoutube />
+            </a>
+          </li>
+          <li>
+            <a href="https://strava.com" aria-label="strava">
+              <IconStrava />
+            </a>
+          </li>
+          <li>
+            <a href="https://tiktok.com" aria-label="tiktok">
+              <IconTikTok />
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
   </nav>
 </header>
 
