@@ -1,0 +1,12 @@
+---
+export interface Props {
+  subtitle: string;
+  description: string;
+}
+const { subtitle, description} = Astro.props;
+---
+
+<div class="grid gap-4 mb-10">
+  <h3>{subtitle}</h3>
+  <p>{description}</p>
+</div>

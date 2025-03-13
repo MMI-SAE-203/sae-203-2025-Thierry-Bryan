@@ -1,0 +1,46 @@
+---
+import "../../styles/global.css";
+import LayoutWithHero from "../../layouts/LayoutWithHero.astro";
+import myImage from "../../assets/hero_page/hero_infos.webp";
+import Paragraphe from "../../components/Paragraphe.astro";
+import France from "../../assets/lieux/infos-pratiques_carte-france.webp";
+
+import { getInvite } from "../../../Backend/backend.mjs";
+const invite = await getInvite();
+
+const title = "Infos pratiques";
+const heroAlt = "Image Hero de la page invité";
+---
+
+<LayoutWithHero title={title} heroImage={myImage} heroAlt={heroAlt}>
+  <div slot="chapo" class="grid">
+    <p>
+      Organisez votre venue au festival de Bavilliers ! Accès, hébergements,
+      lieux et infos pratiques : tout ce qu’il faut pour profiter d’un événement
+      100 % gratuit.
+    </p>
+  </div>
+  <div class="" slot="content">
+    <Paragraphe
+      subtitle="Accessibilité pour tous"
+      description="Entrée : 100 % gratuitePour participer, il vous suffit de remplir un formulaire d'inscription disponible sur notre site ou directement à l'entrée du festival."
+    />
+  </div>
+  <div slot="content">
+    <Paragraphe
+      subtitle="Un cadre naturel au parc de la Douce"
+      description=`Le festival "Ça va trai'ler" se tiendra au parc de la Douce, un écrin de verdure à Belfort, offrant un cadre idéal pour célébrer le trail running en plein air, au plus près de la nature.`
+    />
+    <img src={France.src} alt="Carte de la France" class="w-full h-auto" />
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2688.780103181923!2d6.834470599999999!3d47.6304056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47923c7d58b56a03%3A0x4685f1b0576de9c2!2sParc%20de%20la%20Douce!5e0!3m2!1sfr!2sfr!4v1741859765579!5m2!1sfr!2sfr"
+      width="600"
+      height="450"
+      style="border:0;"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+  </div>
+
+</LayoutWithHero>
