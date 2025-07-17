@@ -1,0 +1,27 @@
+---
+import "../../styles/global.css";
+import LayoutWithHero from "../../layouts/LayoutWithHero.astro";
+import myImage from "../../assets/hero_page/hero_invites.webp";
+import Card from "../../components/Card.astro";
+import Button from "../../components/Button.astro";
+
+import { getInvite } from "../../../Backend/backend.mjs";
+const invite = await getInvite();
+
+const title = "Invités";
+const heroAlt = "Image Hero de la page invité";
+---
+
+<LayoutWithHero title={title} heroImage={myImage} heroAlt={heroAlt}>
+  <div slot="chapo" class="grid">
+    <p class="font-bold mt-3">
+      Cette année, nous accueillons des athlètes, des réalisateurs et des
+      experts en technologie pour partager leurs histoires et leur passion.
+    </p>
+  </div>
+  <div class="" slot="content">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {invite.map((i) => <Card {...i} />)}
+    </div>
+  </div>
+</LayoutWithHero>

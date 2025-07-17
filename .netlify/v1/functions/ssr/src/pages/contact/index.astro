@@ -1,0 +1,75 @@
+---
+import "../../styles/global.css";
+import LayoutWithHero from "../../layouts/LayoutWithHero.astro";
+import myImage from "../../assets/hero_page/hero_contact.webp";
+import ContactForm from "../../components/ContactForm.astro";
+import { getFilms } from "../../../Backend/backend.mjs";
+
+import IconFacebook from "../../assets/icons/icon_facebook-noir.svg";
+import IconInstagram from "../../assets/icons/icon_insta-noir.svg";
+import IconTikTok from "../../assets/icons/icon_tiktok-noir.svg";
+import IconYoutube from "../../assets/icons/icon_youtube-noir.svg";
+import IconStrava from "../../assets/icons/strava-icon_noir.svg";
+
+const invite = await getFilms();
+
+const title = "Contact";
+const heroAlt = "Image Hero de la page contact";
+---
+
+<LayoutWithHero title={title} heroImage={myImage} heroAlt={heroAlt}>
+  <div slot="chapo" class="grid">
+    <p class="font-bold mt-3">
+      Pour toute question, suggestion ou demande d'information concernant le
+      festival "Ça va trai'ler", n'hésitez pas à nous écrire. Nous serons ravis
+      de vous aider !
+    </p>
+  </div>
+   <div class="w-full max-w-4xl mx-auto px-4" slot="content">
+    <ContactForm />
+  </div>
+  <div slot="content">
+    <div class="max-w-3xl mx-auto mt-12 grid gap-8 md:grid-cols-2">
+      <div class="p-6 bg-white rounded-lg shadow-md">
+        <p class="text-xl font-bold mb-3 text-red-700">
+          Informations de contact :
+        </p>
+        <p class="text-gray-700">
+          Adresse <br />
+          Festival Ça va trai'ler <br />
+          90800 Baviliers
+        </p>
+      </div>
+      <div class="p-6 bg-white rounded-lg shadow-md">
+        <p class="text-xl font-bold mb-2 text-red-700">Email</p>
+        <p class="text-gray-700">cavatrailer@festival.com</p>
+      </div>
+      <div class="p-6 bg-white rounded-lg shadow-md">
+        <p class="text-xl font-bold mb-2 text-red-700">Téléphone</p>
+        <p class="text-gray-700">06 12 34 56 78</p>
+      </div>
+      <div class="p-6 bg-white rounded-lg shadow-md">
+        <p class="text-xl font-bold mb-4 text-red-700">
+          Suivez nous sur les réseaux sociaux
+        </p>
+        <div class="flex items-center gap-4 justify-center">
+          <a href="https://facebook.com" aria-label="facebook">
+            <IconFacebook />
+          </a>
+          <a href="https://instagram.com" aria-label="instagram">
+            <IconInstagram />
+          </a>
+          <a href="https://youtube.com" aria-label="youtube">
+            <IconYoutube />
+          </a>
+          <a href="https://strava.com" aria-label="strava">
+            <IconStrava />
+          </a>
+          <a href="https://tiktok.com" aria-label="tiktok">
+            <IconTikTok />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</LayoutWithHero>
