@@ -4,81 +4,109 @@ import IconFacebook from "../assets/icons/icon_facebook-blanc.svg";
 import IconInstagram from "../assets/icons/icon_insta-blanc.svg";
 import IconTikTok from "../assets/icons/icon_tiktok-blanc.svg";
 import IconYoutube from "../assets/icons/icon_youtube-blanc.svg";
-import IconStrava from "../assets/icons/icon_strava-blanc.svg";
+import IconStrava from "../assets/icons/strava-icon.svg";
 import Button from "../components/Button.astro";
 ---
 
 <footer
-  class="grille space-y-6 text-sm bg-black py-8 px-6 text-white items-center border-solid border-t-2 border-t-red-500"
+  class="grid grid-cols-1 lg:grid-cols-12 gap-6 space-y-6 lg:space-y-0 text-sm bg-black py-8 px-6 text-white border-solid border-t-2 border-t-red-500 max-w-7xl mx-auto"
 >
-  <a
-    class="flex items-center gap-5 lg:col-span-3 lg:col-start-0"
-    href="/"
-    aria-label="Accueil"
-  >
-    <LogoFooter />
-    <h3 class="uppercase text-white">Ça va trail'er</h3>
-  </a>
-  <div class="flex justify-center mt-1.25 mb-2.25 lg:col-span-0 lg:col-start-0">
-    <Button variant="default" url="/signup" text="BILLETERIE" />
+  <!-- Section Logo et Billeterie -->
+  <div class="flex flex-col items-center lg:items-start lg:col-span-3 lg:col-start-1">
+    <a
+      class="flex items-center gap-3 mb-4"
+      href="/"
+      aria-label="Accueil"
+    >
+      <LogoFooter class="w-12 h-12" />
+      <h3 class="uppercase text-white font-bold">Ça va trail'er</h3>
+    </a>
+    <div class="flex justify-center lg:justify-start">
+      <Button variant="default" url="/signup" text="BILLETERIE" />
+    </div>
   </div>
-  <nav
-    class="flex flex-col items-center md:items-center mt-6 lg:col-span-3 lg:col-start-7"
-  >
-    <h3 class="mb-2 uppercase text-xl tracking-wide text-white lg:items-start">
+
+  <!-- Section Menu -->
+  <nav class="flex flex-col items-center lg:items-start lg:col-span-2 lg:col-start-4">
+    <h3 class="mb-4 uppercase text-xl tracking-wide text-white font-bold">
       MENU
     </h3>
-    <ul class="flex flex-col space-y-2 items-center">
-      <li><a href="/contact" class="hover:underline">Contact</a></li>
-      <li><a href="/a-propos" class="hover:underline">A propos</a></li>
-      <li><a href="/infos-pratiques" class="hover:underline">Infos pratiques</a></li>
+    <ul class="flex flex-col space-y-2 text-center lg:text-left">
+      <li><a href="/contact" class="hover:underline hover:text-red-400 transition-colors">Contact</a></li>
+      <li><a href="/a-propos" class="hover:underline hover:text-red-400 transition-colors">A propos</a></li>
+      <li><a href="/infos-pratiques" class="hover:underline hover:text-red-400 transition-colors">Infos pratiques</a></li>
     </ul>
   </nav>
-  <div class="text-white grid text-center lg:col-span-3 lg:col-start-10">
-    <h3 class="text-xl mb-2">CONTACT</h3>
-    <address class="not-italic lg:items-start">
-      Parc de la Douce<br />90800 Bavilliers<br />
-      <a href="tel:0384542727">03 84 54 27 27</a><br />
-      <a href="mailto:cavatrailer@festival.com">cavatrailer@festival.com</a>
+
+  <!-- Section Contact -->
+  <div class="text-white text-center lg:text-left lg:col-span-3 lg:col-start-6">
+    <h3 class="text-xl mb-4 font-bold">CONTACT</h3>
+    <address class="not-italic leading-relaxed">
+      Parc de la Douce<br />
+      90800 Bavilliers<br />
+      <a href="tel:0384542727" class="hover:text-red-400 transition-colors">03 84 54 27 27</a><br />
+      <a href="mailto:cavatrailer@festival.com" class="hover:text-red-400 transition-colors">cavatrailer@festival.com</a>
     </address>
   </div>
-  <div
-    class="flex flex-col items-center  md:justify-center space-y-4 md:space-y-0 md:space-x-6 lg:col-span-3 lg:col-start-10"
-  >
-    <h3 class="flex justify-center text-xl mb-2">NOUS SUIVRE</h3>
-    <ul class="flex items-center gap-10">
-      <li>
-        <a href="https://facebook.com" aria-label="facebook">
-          <IconFacebook />
-        </a>
-      </li>
-      <li>
-        <a href="https://instagram.com" aria-label="instagram">
-          <IconInstagram />
-        </a>
-      </li>
-      <li>
-        <a href="https://youtube.com" aria-label="youtube">
-          <IconYoutube />
-        </a>
-      </li>
-      <li>
-        <a href="https://strava.com" aria-label="strava">
-          <IconStrava />
-        </a>
-      </li>
-      <li>
-        <a href="https://tiktok.com" aria-label="tiktok">
-          <IconTikTok />
-        </a>
-      </li>
-    </ul>
+
+    <!-- Section Réseaux sociaux -->
+  <div class="flex flex-col items-center lg:items-start lg:col-span-4 lg:col-start-9">
+    <h3 class="text-xl mb-4 font-bold">NOUS SUIVRE</h3>
+    <div class="flex flex-row items-center justify-center lg:justify-start gap-4">
+      <a 
+      href="https://facebook.com" 
+      aria-label="Facebook"
+      class="flex items-center"
+      >
+      <IconFacebook class="w-10 h-10 hover:text-red-400 transition-colors" />
+      </a>
+      
+      <a 
+      href="https://instagram.com" 
+      aria-label="Instagram"
+      class="flex items-center"
+      >
+      <IconInstagram class="w-10 h-10 hover:text-red-400 transition-colors" />
+      </a>
+      
+      <a 
+      href="https://youtube.com" 
+      aria-label="YouTube"
+      class="flex items-center" 
+      >
+      <IconYoutube class="w-10 h-10 hover:text-red-400 transition-colors" />
+      </a>
+      
+      <a 
+      href="https://strava.com" 
+      aria-label="Strava"
+      class="flex items-center"
+      >
+      <IconStrava class="w-10 h-10 hover:text-red-400 transition-colors" />
+      </a>
+      
+      <a 
+      href="https://tiktok.com" 
+      aria-label="TikTok"
+      class="flex items-center"
+      >
+      <IconTikTok class="w-10 h-10 hover:text-red-400 transition-colors" />
+      </a>
+    </div>
   </div>
-  <div class="text-white lg:col-span-6 lg:col-start-5">
-    <h3 class="text-center text-xl lg:text-start">MENTIONS LÉGALES</h3>
-    <p class="text-center lg:text-start">
-      © 2024 Ça va trail’er Festival - Tous droits réservés <br />
-      [Mentions légales] | [Politique de confidentialité] | [Conditions générales]
+
+  <!-- Section Mentions légales -->
+  <div class="text-white text-center lg:text-left lg:col-span-12 lg:col-start-1 pt-6 border-t border-gray-600">
+    <h3 class="text-lg font-bold mb-2">MENTIONS LÉGALES</h3>
+    <p class="text-sm text-gray-300">
+      © 2024 Ça va trail'er Festival - Tous droits réservés<br />
+      <span class="inline-flex flex-wrap gap-4 mt-2">
+        <a href="/mentions-legales" class="hover:text-red-400 transition-colors">Mentions légales</a>
+        <span>|</span>
+        <a href="/politique-confidentialite" class="hover:text-red-400 transition-colors">Politique de confidentialité</a>
+        <span>|</span>
+        <a href="/conditions-generales" class="hover:text-red-400 transition-colors">Conditions générales</a>
+      </span>
     </p>
   </div>
 </footer>
