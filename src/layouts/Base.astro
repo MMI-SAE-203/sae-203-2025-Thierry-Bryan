@@ -4,9 +4,9 @@ import Footer from "../components/Footer.astro";
 import "@fontsource-variable/montserrat";
 import "@fontsource/anton";
 
-const { 
-  title = "Ça va Trail'er - Festival de Trail Running", 
-  description = "Festival de trail running à Belfort - Films, rencontres et passion du trail" 
+const {
+  title = "Ça va Trail'er - Festival de Trail Running",
+  description = "Festival de trail running à Belfort - Films, rencontres et passion du trail",
 } = Astro.props;
 ---
 
@@ -17,14 +17,17 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="generator" content={Astro.generator} />
-    
+
     <!-- SEO Meta Tags -->
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="keywords" content="trail running, festival, Belfort, films, cinéma, sport, nature, montagne, course" />
+    <meta
+      name="keywords"
+      content="trail running, festival, Belfort, films, cinéma, sport, nature, montagne, course"
+    />
     <meta name="author" content="Festival Ça va Trail'er" />
     <meta name="robots" content="index, follow" />
-    
+
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -33,41 +36,41 @@ const {
     <meta property="og:image" content="/favicon.png" />
     <meta property="og:site_name" content="Ça va Trail'er" />
     <meta property="og:locale" content="fr_FR" />
-    
+
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content="/favicon.png" />
-    
+
     <!-- Additional SEO -->
     <meta name="theme-color" content="#dc2626" />
     <link rel="canonical" href="https://cavatrailer.com" />
-    
+
     <!-- Structured Data -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Event",
-      "name": "Ça va Trail'er",
-      "description": "Festival de trail running avec projections de films et rencontres",
-      "startDate": "2025-04-15",
-      "endDate": "2025-04-21",
-      "location": {
-        "@type": "Place",
-        "name": "Belfort",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Belfort",
-          "postalCode": "90000",
-          "addressCountry": "FR"
+      {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        "name": "Ça va Trail'er",
+        "description": "Festival de trail running avec projections de films et rencontres",
+        "startDate": "2025-04-15",
+        "endDate": "2025-04-21",
+        "location": {
+          "@type": "Place",
+          "name": "Belfort",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Belfort",
+            "postalCode": "90000",
+            "addressCountry": "FR"
+          }
+        },
+        "organizer": {
+          "@type": "Organization",
+          "name": "Festival Ça va Trail'er"
         }
-      },
-      "organizer": {
-        "@type": "Organization",
-        "name": "Festival Ça va Trail'er"
       }
-    }
     </script>
   </head>
   <body>

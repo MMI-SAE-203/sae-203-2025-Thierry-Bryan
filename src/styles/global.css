@@ -49,4 +49,28 @@ nav a {
     main a {
         @apply text-red-700;
     }
+
+    /* Barre de défilement rouge */
+    ::-webkit-scrollbar {
+        width: 12px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: rgb(185, 28, 28); /* red-700 */
+        border-radius: 6px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: rgb(153, 27, 27); /* red-800 */
+    }
+
+    /* Pour Firefox */
+    html {
+        scrollbar-width: thin;
+        scrollbar-color: rgb(185, 28, 28) #f1f1f1;
+    }
 }
