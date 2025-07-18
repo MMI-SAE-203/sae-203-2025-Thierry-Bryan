@@ -14,8 +14,10 @@ import imgPartenaire6 from "../assets/partenaire/accueil_salomon.webp";
 import imgPartenaire7 from "../assets/partenaire/accueil_wwf.webp";
 import ImagePB from "../components/ImagePB.astro";
 
-const title = "Ça va Trail'er";
-const heroAlt = "Description de l'image hero";
+const title = "Ça va Trail'er - Le Trail Festival";
+const description =
+  "Découvrez le festival Ça va Trail'er du 15 au 21 avril 2025 à Belfort. Projections de films, rencontres avec des athlètes et cinéastes passionnés de trail running.";
+const heroAlt = "Festival Ça va Trail'er - Trail running et cinéma à Belfort";
 
 const partenaires = [
   { image: imgPartenaire1, nom: "Arte" },
@@ -28,8 +30,13 @@ const partenaires = [
 ];
 ---
 
-<LayoutWithHero title={title} heroImage={myImage} heroAlt={heroAlt}>
-  <div slot="chapo" class="grid">
+<LayoutWithHero
+  title={title}
+  description={description}
+  heroImage={myImage}
+  heroAlt={heroAlt}
+>
+  <section slot="chapo" class="grid">
     <h2 class="mb-8">
       La prochaine édition de "Ça va trailer" ce déroulera du 15 au 21 avril
       2025
@@ -47,11 +54,13 @@ const partenaires = [
         travers des récits captivants.
       </p>
     </div>
-  </div>
-  <div
+  </section>
+  <section
     slot="content"
     class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6"
+    aria-labelledby="services-heading"
   >
+    <h2 id="services-heading" class="sr-only">Nos services</h2>
     <Card_accueil
       subtitle="Programme"
       description=`La programmation de "Ça va trai'ler" offre une sélection de films immersifs, courts métrages et trailers réalisés par de nouveaux artistes en collaboration avec des athlètes, mettant en lumière l'énergie et la passion du trail running.`
@@ -76,21 +85,22 @@ const partenaires = [
       buttonUrl="/signup"
       buttonText="INFOS PRATIQUES"
     />
-  </div>
-  <div slot="content" class="mt-16">
-    <h2 class="text-3xl mb-8">Nos partenaires</h2>
+  </section>
+  <section slot="content" class="mt-16" aria-labelledby="partners-heading">
+    <h2 id="partners-heading" class="text-3xl mb-8">Nos partenaires</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-8">
       {
         partenaires.map((partenaire) => (
-          <div class="flex items-center justify-center p-4">
+          <article class="flex items-center justify-center p-4">
             <img
               src={partenaire.image.src}
               alt={`Logo ${partenaire.nom}`}
               class="max-h-20 object-contain"
+              loading="lazy"
             />
-          </div>
+          </article>
         ))
       }
     </div>
-  </div>
+  </section>
 </LayoutWithHero>
